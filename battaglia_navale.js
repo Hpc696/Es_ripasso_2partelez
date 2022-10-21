@@ -16,15 +16,22 @@ let life= 3;
 let guess= false;
 //const howmanyship= parseInt(prompt("Quante navi vuoi piazzare "));
 //let remain = howmanyship;
+let choose= [];
+let howmanyship = parseInt(prompt("Con quante navi vuoi giocare? "));
+
 function Insert(){
-    let choose=prompt("Scegli dove piazzare la nave, Casella n: ");
-    for(let i=0; i<ships.length; i++){
-        //for(q=1; q<=howmanyship; q++){
-        //console.log("Scegli dove piazzare la nave numero "+q);    
-        if (choose==i){
-            ships[choose]= 'N';
-            //console.log(ships[choose]);
-        }    
+    let place=0;
+    for(n=1; n<=howmanyship; n++){
+
+        choose[n]=prompt("Scegli dove piazzare la "+ n +" nave, Casella n: ");
+        for(let i=0; i<ships.length; i++){
+            //for(q=1; q<=howmanyship; q++){
+            //console.log("Scegli dove piazzare la nave numero "+q);    
+            if (choose[n]==i){
+                place= choose[n];
+                ships[place]= 'N';
+            }    
+        }
     }
 }
 Insert();
