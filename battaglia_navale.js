@@ -13,16 +13,15 @@ let ships=[
 ];
 
 let life= 3;
-let guess= false;
+//let guess= false;
 //const howmanyship= parseInt(prompt("Quante navi vuoi piazzare "));
-//let remain = howmanyship;
 let choose= [];
-let howmanyship = parseInt(prompt("Con quante navi vuoi giocare? "));
+const howmanyship = parseInt(prompt("Con quante navi vuoi giocare? "));
+let remain = howmanyship;
 
 function Insert(){
     let place=0;
     for(n=1; n<=howmanyship; n++){
-
         choose[n]=prompt("Scegli dove piazzare la "+ n +" nave, Casella n: ");
         for(let i=0; i<ships.length; i++){
             //for(q=1; q<=howmanyship; q++){
@@ -40,17 +39,19 @@ function Play(){
     for(let i=0; i<ships.length; i++){
         //for(q=1; q<=howmanyship; q++){
         //console.log("Scegli dove piazzare la nave numero "+q);    
-        while(life>0 && guess==false){
+        while(life>0 /* && guess==false*/ && remain>0){
             let chooseboom=prompt("Scegli dove sbombardare! Casella n: ");
-            if(chooseboom!=ships.indexOf('N')){
+            if(ships[chooseboom]!='N'){
                 life = life-1;
                 console.log("Hai " + life + " vite");
             } else {
-                guess = true;
-                console.log("Colpito e affondato!")
+                remain= remain-1;
+                //guess = true;
+                console.log("Affondata!");
+                console.log("Ti mancano "+remain+" navi da affondare");
             }
             if(life==0){
-                console.log("GAME OVER")
+                console.log("GAME OVER");
             }
         }
             //console.log(ships[choose]);
