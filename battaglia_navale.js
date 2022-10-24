@@ -1,44 +1,24 @@
 const prompt=require('prompt-sync')();
-
-/* layout?
-for(let layout=1; layout<=4; layout++){
-
-    console.log('| _ | _ | _ | _ |' + '\n' ); 
-} */
+const function1 = require('./Insert');
+const function2 = require('./Table');
 
 let ships=[
     ' ', ' ', ' ',
     ' ', ' ', ' ',
     ' ', ' ', ' '
 ];
+module.exports = ships;
 
-let life= 3;
-//let guess= false;
-//const howmanyship= parseInt(prompt("Quante navi vuoi piazzare "));
-let choose= [];
 const howmanyship = parseInt(prompt("Con quante navi vuoi giocare? "));
+module.exports = howmanyship;
 let remain = howmanyship;
 
-function Insert(){
-    let place=0;
-    for(n=1; n<=howmanyship; n++){
-        choose[n]=prompt("Scegli dove piazzare la "+ n +" nave, Casella n: ");
-        for(let i=0; i<ships.length; i++){
-            //for(q=1; q<=howmanyship; q++){
-            //console.log("Scegli dove piazzare la nave numero "+q);    
-            if (choose[n]==i){
-                place= choose[n];
-                ships[place]= 'N';
-            }    
-        }
-    }
-}
-Insert();
+let life= 3;
+
+function1(ships, howmanyship);
 
 function Play(){
-    for(let i=0; i<ships.length; i++){
-        //for(q=1; q<=howmanyship; q++){
-        //console.log("Scegli dove piazzare la nave numero "+q);    
+    for(let i=0; i<ships.length; i++){   
         while(life>0 /* && guess==false*/ && remain>0){
             let chooseboom=prompt("Scegli dove sbombardare! Casella n: ");
             if(ships[chooseboom]!='N'){
@@ -46,9 +26,13 @@ function Play(){
                 console.log("Hai " + life + " vite");
             } else {
                 remain= remain-1;
+                ships[chooseboom]='X';
                 //guess = true;
                 console.log("Affondata!");
                 console.log("Ti mancano "+remain+" navi da affondare");
+            }
+            if(remain==0){
+                console.log("Hai vinto bastardo!");
             }
             if(life==0){
                 console.log("GAME OVER");
@@ -59,17 +43,4 @@ function Play(){
 }
 Play();
 
-const printTabella = () => {
-    let line = "";
-    for (let i = 1; i < 10; i++) {
-        line += ships[i - 1] + ' | ';
-
-        if (i % 3 === 0) {
-            console.log(line);
-            console.log('____________')
-            line = "";
-        }
-
-    }
-}
-printTabella();
+function2(ships);
