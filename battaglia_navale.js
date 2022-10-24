@@ -1,6 +1,7 @@
 const prompt=require('prompt-sync')();
 const function1 = require('./Insert');
 const function2 = require('./Table');
+var emoji = require("node-emoji");
 
 let ships=[
     ' ', ' ', ' ',
@@ -21,12 +22,12 @@ function Play(){
     for(let i=0; i<ships.length; i++){   
         while(life>0 /* && guess==false*/ && remain>0){
             let chooseboom=prompt("Scegli dove sbombardare! Casella n: ");
-            if(ships[chooseboom]!='N'){
+            if(ships[chooseboom]!=emoji.get("boat")){
                 life = life-1;
                 console.log("Hai " + life + " vite");
             } else {
                 remain= remain-1;
-                ships[chooseboom]='X';
+                ships[chooseboom]=emoji.get("shit");
                 //guess = true;
                 console.log("Affondata!");
                 console.log("Ti mancano "+remain+" navi da affondare");
@@ -44,5 +45,5 @@ function Play(){
 Play();
 
 function2(ships);
-console.log("N = nave non affondata");
-console.log("X = nave affondata");
+console.log(emoji.get("boat") +" = nave non affondata");
+console.log(emoji.get("shit") +" = nave affondata");

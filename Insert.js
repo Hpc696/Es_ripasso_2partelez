@@ -1,4 +1,6 @@
 const prompt=require('prompt-sync')();
+var emoji = require("node-emoji");
+
 const function1= function Insert(ships, howmanyship){
     let place=0;
     let choose= [];
@@ -9,7 +11,7 @@ const function1= function Insert(ships, howmanyship){
             //console.log("Scegli dove piazzare la nave numero "+q);    
             if (choose[n]==i){
                 place= choose[n];
-                ships[place]= 'N';
+                ships[place]= emoji.get("boat");
             }    
         }
     }
