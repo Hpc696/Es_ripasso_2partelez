@@ -44,3 +44,5 @@ function Play(){
 Play();
 
 function2(ships);
+console.log("N = nave non affondata");
+console.log("X = nave affondata");
