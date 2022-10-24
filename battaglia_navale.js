@@ -1,7 +1,8 @@
 const prompt=require('prompt-sync')();
 const function1 = require('./Insert');
 const function2 = require('./Table');
-var emoji = require("node-emoji");
+const emoji = require("node-emoji");
+const emoji2 = require("node-emoji");
 
 let ships=[
     ' ', ' ', ' ',
@@ -27,7 +28,7 @@ function Play(){
                 console.log("Hai " + life + " vite");
             } else {
                 remain= remain-1;
-                ships[chooseboom]=emoji.get("shit");
+                ships[chooseboom]=emoji2.get("coffee");
                 //guess = true;
                 console.log("Affondata!");
                 console.log("Ti mancano "+remain+" navi da affondare");
@@ -46,4 +47,4 @@ Play();
 
 function2(ships);
 console.log(emoji.get("boat") +" = nave non affondata");
-console.log(emoji.get("shit") +" = nave affondata");
+console.log(emoji2.get("coffee") +" = nave affondata");
